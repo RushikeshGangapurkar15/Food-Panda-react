@@ -67,6 +67,8 @@ const Body = () => {
         {/* <ResCard resData={resList[3]} /> */}
         {listOfRes.map((restaurant) => (
           <ResCard keys={restaurant.data.id} resData={restaurant} />
+
+          {/* assd */}
         ))}
       </div>
     </div>
