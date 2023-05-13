@@ -1,4 +1,4 @@
-# namaste React
+React Food App
 
 ...
 
