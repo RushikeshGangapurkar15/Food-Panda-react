@@ -4,10 +4,15 @@ import { HERO_IMG } from "../common/const";
 
 import { useState } from "react";
 
+function filterData(searchText, listOfRes) {
+  return listOfRes.filter((res) => res.data.name.includes(searchText));
+}
+
 const Body = () => {
   // State variable
   const [listOfRes, setListOfRes] = useState(resList);
   const [searchText, setSearchText] = useState("");
+  // const [serachClick, setSearchClick] = useState("");
 
   console.log("render");
 
@@ -33,7 +38,18 @@ const Body = () => {
             setSearchText(e.target.value);
           }}
         />
-        <button>Search</button>
+
+        <button
+          onClick={() => {
+            // Filter the data
+            const data = filterData(searchText, listOfRes);
+            setListOfRes(data);
+            // setSearchClick("true");
+            // listOfRes = resList;
+          }}
+        >
+          Search
+        </button>
       </div>
       <div className="filter">
         <button
