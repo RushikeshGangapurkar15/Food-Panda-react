@@ -3,6 +3,7 @@ import { CDN_URL } from "../common/const";
 const ResCard = (props) => {
   const { resData } = props;
   const { name, cuisines, costForTwo, deliveryTime, avgRating } = resData?.data;
+
   return (
     <div className="res-card">
       <img
@@ -22,6 +23,8 @@ const ResCard = (props) => {
           <b>Price : {costForTwo / 100} ₹ For two</b>
         </p>
         <div className="rating">
+          {}
+
           <p className="rating-count">⭐ {avgRating}</p>
         </div>
       </div>

@@ -2,7 +2,8 @@ import ResCard from "./ResCard";
 import resList from "../common/mockdata";
 import { HERO_IMG } from "../common/const";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 function filterData(searchText, listOfRes) {
   return listOfRes.filter((res) => res.data.name.includes(searchText));
@@ -14,11 +15,22 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   // const [serachClick, setSearchClick] = useState("");
 
-  console.log("render");
+  // useEffect(() => {
+  //   getRes();
+  // }, []);
+
+  // async function getRes() {
+  //   const data = await fetch("");
+  //   const json = await data.json();
+  // }
+
+  // Conditional rendering
 
   //Normal jS variable
   // let listOfRes = [];
-  return (
+  return listOfRes.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="container">
       <div className="hero">
         <h1 className="hero-text">
@@ -51,7 +63,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="filter">
+      {/* <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
@@ -61,8 +73,7 @@ const Body = () => {
         >
           Top Rated{" "}
         </button>
-      </div>
-
+      </div> */}
       <div className="res-container">
         {/* <ResCard resData={resList[3]} /> */}
         {listOfRes.map((restaurant) => (
