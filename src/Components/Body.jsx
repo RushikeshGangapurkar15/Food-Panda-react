@@ -11,18 +11,23 @@ function filterData(searchText, listOfRes) {
 
 const Body = () => {
   // State variable
-  const [listOfRes, setListOfRes] = useState(resList);
+  // const [listOfAllRes, setListOfAllRes] = useState([]);
+  const [listOfRes, setListOfRes] = useState([]);
   const [searchText, setSearchText] = useState("");
   // const [serachClick, setSearchClick] = useState("");
 
-  // useEffect(() => {
-  //   getRes();
-  // }, []);
+  useEffect(() => {
+    getRes();
+  }, []);
 
-  // async function getRes() {
-  //   const data = await fetch("");
-  //   const json = await data.json();
-  // }
+  async function getRes() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+
+    console.log(json);
+  }
 
   // Conditional rendering
 
@@ -63,7 +68,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      {/* <div className="filter">
+      <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
@@ -73,7 +78,7 @@ const Body = () => {
         >
           Top Rated{" "}
         </button>
-      </div> */}
+      </div>
       <div className="res-container">
         {/* <ResCard resData={resList[3]} /> */}
         {listOfRes.map((restaurant) => (
